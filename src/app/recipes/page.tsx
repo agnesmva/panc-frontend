@@ -2,7 +2,7 @@ import Footer from '@/components/footer/footer'
 import Nav from '@/components/nav/nav'
 import React from 'react'
 
-function HomePage() {
+function Recipes() {
   return (
     <div>
       <Nav />
@@ -16,4 +16,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Recipes
