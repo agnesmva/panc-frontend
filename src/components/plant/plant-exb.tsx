@@ -1,10 +1,11 @@
 import PlantView from '@/components/plant/plant-view'
-import PlantInfo from '@/components/plant/plant_info'
+import PlantInfo from '@/components/plant/plant-info'
+import PlantSearch from './plant-search'
 
 export default function DashboardPage() {
   return (
     <div className="container mx-auto p-4">
-      
+      <PlantSearch />
       {/* Layout responsivo: 
         - Telas pequenas: Carrossel em cima, Info embaixo.
         - Telas grandes (lg): Lado a lado.

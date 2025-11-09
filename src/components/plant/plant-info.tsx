@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import PlantSearch from "./plant-search";
 
 // --- DADOS DE EXEMPLO ---
 // Em um app real, você receberia isso via props
@@ -50,6 +51,7 @@ function PlantInfo() {
   return (
     // Definimos uma largura máxima para o componente
     <div className="w-full max-w-lg mx-auto py-8">
+      
       <Card>
         <CardHeader>
           <CardTitle>{MOCK_PLANT_INFO.nomePopular}</CardTitle>
