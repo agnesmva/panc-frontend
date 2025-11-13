@@ -1,18 +1,11 @@
 "use client"; // Obrigatório para componentes que usam hooks e interatividade
 
-import React, { useState } from 'react';
+import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Menu } from 'lucide-react'; // Ícone do Hamburger
 
 // --- Componentes Shadcn ---
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle, // Estilos padrão para os links
-} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetClose, // Componente para fechar o menu
@@ -39,6 +32,21 @@ function Nav() {
   // Função para verificar se o link está ativo
   const isActive = (path: string) => pathname === path;
 
+  // ===================================
+  // LÓGICA DE AUTO-OCULTAR INSERIDA AQUI
+  // ===================================
+  // 1. Verifica se a URL atual começa com /dashboard
+  const isDashboard = pathname.startsWith('/dashboard');
+
+  // 2. Se for, o componente <Nav> não renderiza NADA.
+  if (isDashboard) {
+    return null;
+  }
+  // ===================================
+  // FIM DA LÓGICA
+  // ===================================
+
+  // 3. Se NÃO for dashboard, renderiza o Nav normalmente:
   return (
     // Cores primárias do seu tailwind.config
     <nav className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
@@ -48,15 +56,17 @@ function Nav() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/home">
+              {/* Corrigido h-15 para h-16 (classe válida do Tailwind) */}
               <img 
-                className="h-20 w-auto cursor-pointer rounded-full" 
-                src="https://res.cloudinary.com/dwkzysoyd/image/upload/v1749610754/Branco_kec5wp.png"
+                className="h-16 w-auto cursor-pointer" 
+                src="https://res.cloudinary.com/dwkzysoyd/image/upload/v1763055410/b362cc_57e359e57ad241fea682c3df2c2384b0_mv2_edm8pe.png"
                 alt="Logo"
               />
             </Link>
           </div>
           
-	<div className="hidden md:flex space-x-8">
+          {/* Menu Desktop */}
+          <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -69,8 +79,8 @@ function Nav() {
                 {item.label}
               </Link>
             ))}
-          </div>	
-          
+          </div>
+
 
           {/* ================================== */}
           {/* MENU MOBILE (com Shadcn Sheet)     */}
