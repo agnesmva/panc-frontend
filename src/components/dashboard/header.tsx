@@ -22,10 +22,10 @@ function HeaderDashboard() {
   
   const handleLigarBomba = async () => {
     console.log("Enviando comando: LIGAR BOMBA");
-    setIsBombaLoading(true);
+    
     const apiUrl = 'http://localhost:5000/ligar-bomba';
     const dados = { acao: 'L' };
-
+    setIsBombaLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1500)); 
       const response = await fetch(apiUrl, {
@@ -35,12 +35,10 @@ function HeaderDashboard() {
       });
 
       if (response.ok) {
-        // 3. API ATUALIZADA: Mais simples!
-        toast.success("Sucesso! ✅", {
+        toast.success("Sucesso", {
           description: "Comando para ligar a bomba foi enviado.",
         })
       } else {
-        // 4. API ATUALIZADA: toast.error() para erros
         toast.error("Erro no Servidor", {
           description: "Falha ao enviar comando. Tente novamente.",
         })
