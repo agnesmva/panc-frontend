@@ -62,9 +62,9 @@ function TableDashboard() {
   const formatStatusText = (status: PlantStatus) => {
     switch (status) {
       case "ok":
-        return "Planta OK"
+        return "Regular"
       case "atencao":
-        return "Precisa de Atenção"
+        return "Atenção"
       case "urgente":
         return "Urgente"
       default:
