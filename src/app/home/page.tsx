@@ -165,8 +165,7 @@ export default function HomePage() {
             </Card>
           ))}
         </div>
-      </section>
-    <Footer />      
+      </section>     
     </main>
   );
 }
