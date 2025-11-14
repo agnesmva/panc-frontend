@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button"
 import { Power, RefreshCw, Download, Loader2 } from "lucide-react" 
 import { toast } from "sonner"
 
+const API_URL = 'http://localhost:5000/'
+
 function HeaderDashboard() {
 
   const [isBombaLoading, setIsBombaLoading] = useState(false)
@@ -23,8 +25,8 @@ function HeaderDashboard() {
   const handleLigarBomba = async () => {
     console.log("Enviando comando: LIGAR BOMBA");
     
-    const apiUrl = 'http://localhost:5000/ligar-bomba';
-    const dados = { acao: 'L' };
+    const apiUrl = 'http://localhost:5000/comando/bomba';
+    const dados = { ligar: 'L' };
     setIsBombaLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1500)); 
@@ -53,14 +55,32 @@ function HeaderDashboard() {
   }
 
   const handleReiniciarColeta = async () => {
-    console.log("Enviando comando: REINICIAR COLETA")
-    setIsColetaLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsColetaLoading(false);
-    
-    toast.info("Coleta Reiniciada 🔄", {
-      description: "Os sensores estão fazendo uma nova leitura.",
-    })
+    const apiUrl = 'http://localhost:5000/comando/bomba';
+    const dados = { desligar: 'D' };
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500)); 
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados) 
+      });
+
+      if (response.ok) {
+        toast.success("Sucesso", {
+          description: "Comando para ligar a bomba foi enviado.",
+        })
+      } else {
+        toast.error("Erro no Servidor", {
+          description: "Falha ao enviar comando. Tente novamente.",
+        })
+      }
+    } catch (error) {
+      toast.error("Erro de Rede!", {
+        description: "Não foi possível conectar ao servidor.",
+      })
+    } finally {
+      setIsBombaLoading(false);
+    }
   }
 
   const handleExportarCSV = async () => {
