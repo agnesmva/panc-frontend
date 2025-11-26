@@ -24,12 +24,17 @@ import { url } from 'inspector'
 const mockParticipants = [
   { name: "Juliana Audi Giannoni", role: "Coordenadora", fallback: "JG", url : "https://res.cloudinary.com/dwkzysoyd/image/upload/v1763069633/photo_2025-11-13_18-33-21_k9pp1x.jpg"},
   { name: "João Cardia", role: "Pesquisador (TI)", fallback: "JS", url: "https://res.cloudinary.com/dwkzysoyd/image/upload/v1763070149/joao_bvsoeg.png" },
+<<<<<<< HEAD
   { name: "Maria Oliveira", role: "Pesquisadora (Biologia)", fallback: "MO", url: "https://res.cloudinary.com/dwkzysoyd/image/upload/v1763069633/photo_2025-11-13_18-33-21_k9pp1x.jpg" },
   { name: "Carlos Souza", role: "Voluntário", fallback: "CS", url: "https://res.cloudinary.com/dwkzysoyd/image/upload/v1763070149/joao_bvsoeg.png" },
   { name: "Carlos Souza", role: "Voluntário", fallback: "CS" },
   { name: "Carlos Souza", role: "Voluntário", fallback: "CS" },
   { name: "Carlos Souza", role: "Voluntário", fallback: "CS" },
   { name: "Carlos Souza", role: "Voluntário", fallback: "CS" },
+=======
+  { name: "Cássio Faria da Silva", role: "Orientador de UX", fallback: "CS", url: "https://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4745752A6"},
+  { name: "Maria Oliveira", role: "Pesquisadora (Biologia)", fallback: "MO", url: "https://res.cloudinary.com/dwkzysoyd/image/upload/v1763069633/photo_2025-11-13_18-33-21_k9pp1x.jpg" },
+>>>>>>> origin/pancjoao
 ]
 
 const mockRecipes = [

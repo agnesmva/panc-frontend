@@ -1,6 +1,10 @@
 "use client" // Componente com botões interativos (onClick)
 
+<<<<<<< HEAD
 import React, { useState } from "react"
+=======
+import React, { useEffect, useState } from "react"
+>>>>>>> origin/pancjoao
 import {
   Card,
   CardContent,
@@ -9,14 +13,39 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+<<<<<<< HEAD
 import { Button } from "@/components/ui/button"
 import { Power, RefreshCw, Download, Loader2 } from "lucide-react" 
 import { toast } from "sonner"
+=======
+import { Power, RefreshCw, Download, Loader2 } from "lucide-react" 
+import { toast } from "sonner"
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { onAuthStateChanged, signOut, type User } from 'firebase/auth'
+import { auth } from '@/lib/firebase'
+import { Button } from '@/components/ui/button'
+>>>>>>> origin/pancjoao
 
 const API_URL = 'http://localhost:5000/'
 
 function HeaderDashboard() {
 
+<<<<<<< HEAD
+=======
+  const router = useRouter()
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u)
+      setLoading(false)
+    })
+    return () => unsub()
+  }, [])
+
+>>>>>>> origin/pancjoao
   const [isBombaLoading, setIsBombaLoading] = useState(false)
   const [isColetaLoading, setIsColetaLoading] = useState(false)
   const [isCsvLoading, setIsCsvLoading] = useState(false)
@@ -94,6 +123,17 @@ function HeaderDashboard() {
     })
   }
 
+<<<<<<< HEAD
+=======
+  async function handleLogout() {
+    try {
+      await signOut(auth)
+    } finally {
+      router.push('/login')
+    }
+  }
+
+>>>>>>> origin/pancjoao
   // --- O JSX (sem alterações) ---
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -187,6 +227,22 @@ function HeaderDashboard() {
         </CardFooter>
       </Card>
 
+<<<<<<< HEAD
+=======
+      {/* Botão de Logout ou Login */}
+      <div className="col-span-1 md:col-span-3">
+        <div className="flex justify-end">
+          {!loading && (user ? (
+            <Button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 text-white">
+              Deslogar
+            </Button>
+          ) : (
+            <Link href="/login">Entrar</Link>
+          ))}
+        </div>
+      </div>
+
+>>>>>>> origin/pancjoao
     </div>
   )
 }

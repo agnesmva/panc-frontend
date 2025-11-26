@@ -16,12 +16,17 @@ import {
   BarChart3,
   ListTodo,
 } from 'lucide-react'
+<<<<<<< HEAD
+=======
+import { redirect } from 'next/navigation'
+>>>>>>> origin/pancjoao
 
 /**
  * Página Inicial (Home)
  * Fornece uma visão geral do projeto e links para as seções principais.
  */
 export default function HomePage() {
+<<<<<<< HEAD
   return (
     // O 'layout.tsx' já fornece o 'flex-1', então esta 'main'
     // naturalmente preenche o espaço entre o Nav e o Footer.
@@ -114,4 +119,7 @@ export default function HomePage() {
 
     </main>
   );
+=======
+  redirect('/login')
+>>>>>>> origin/pancjoao
 }
